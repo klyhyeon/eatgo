@@ -27,7 +27,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(RestaurantController.class)
 public class RestaurantControllerTest {
 
-
     @Autowired
     private MockMvc mvc;
 
@@ -35,19 +34,7 @@ public class RestaurantControllerTest {
     //가짜 객체
     private RestaurantService restaurantService;
 
-//    @SpyBean
-//    //Container 생성되었을 때 SpringBoot의 경우 Test에 SpyBean으로 의존성 주입 필요함
-//    //실제 구현이 없는 Interface의 경우 SpyBean 뒤에 실제 구현 클래스 명을 기재해줘야한다.
-//    private RestaurantService restaurantService;
-//
-//    @SpyBean (RestaurantRepositoryImpl.class)
-//    private RestaurantRepository restaurantRepository;
-//
-//    @SpyBean(MenuItemRepositoryImpl.class)
-//    private MenuItemRepository menuItemRepository;
-
     @Test
-    //처리할 web에 대한 요청
     public void list() throws Exception {
         List<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(new Restaurant(1004L, "JOKER House", "Seoul"));
@@ -98,7 +85,9 @@ public class RestaurantControllerTest {
                 ))
                 .andExpect(content().string(
                         containsString("\"name\":\"Cyber Food\"")
-                ));
+                ))
+                .andExpect(content().string(
+                        containsString("Kimchi")));
     }
 
     @Test

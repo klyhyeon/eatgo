@@ -102,10 +102,9 @@ public class RestaurantControllerTest {
 //                    .build();
 //        });
 
-
         mvc.perform(post("/restaurants")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\":\"Sushi\",\"address\":\"Changwon\"}"))
+                .content("{\"name\":\"자연석돌구이\",\"address\":\"Changwon\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/restaurants/1234"))
                 .andExpect(content().string("{}"));

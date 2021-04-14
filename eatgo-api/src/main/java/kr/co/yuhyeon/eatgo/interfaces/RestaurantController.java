@@ -38,14 +38,10 @@ public class RestaurantController {
     @PostMapping("/restaurants")
     public ResponseEntity<?> create(@RequestBody Restaurant resource)
             throws URISyntaxException {
-        //@RequestBody JSON 형식으로 넘겨준 형식을 받을 수 있는 클래스를 만들어 줄것임
         String name = resource.getName();
         String address = resource.getAddress();
-
         Restaurant restaurant = new Restaurant(name, address);
         restaurantService.addRestaurant(restaurant);
-
-        //TODO: ResponseEntity를 왜 사용하는지?
         URI location = new URI("/restaurants/" + restaurant.getId());
         return ResponseEntity.created(location).body("{}");
     }

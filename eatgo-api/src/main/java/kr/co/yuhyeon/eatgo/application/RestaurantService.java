@@ -9,14 +9,16 @@ import java.util.List;
 @Service
 public class RestaurantService {
 
-    @Autowired
+
     //Impl 클래스로 할 경우 제한되기 때문에 Interface를 참조 Interface 내 메서드만 사용
     private RestaurantRepository restaurantRepository;
 
-    @Autowired
     //Impl 클래스로 할 경우 제한되기 때문에 Interface를 참조 Interface 내 메서드만 사용
     private MenuItemRepository menuItemRepository;
 
+    public RestaurantService() {
+
+    }
 
     public RestaurantService(RestaurantRepository restaurantRepository,
                              MenuItemRepository menuItemRepository) {
